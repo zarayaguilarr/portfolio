@@ -1,42 +1,109 @@
+import { lazy, Suspense } from 'react'
+import { Routes, Route } from 'react-router-dom'
 import { DarkModeProvider, useDarkMode } from './contexts/DarkModeContext'
+import { useThemeColors } from './hooks/useThemeColors'
+import { colors } from './styles/colors'
 import Navigation from './components/section/Navigation'
 import About from './components/section/About'
-import Footer from './components/Footer'
-import { ErrorBoundary } from './components/ErrorBoundary'
+import { divider } from './assets'
+import './App.css'
 
-console.log('App.tsx loading...');
+// Lazy load components
+const Contact = lazy(() => import('./pages/Contact'))
+const Projects = lazy(() => import('./components/section/Projects'))
+const Experience = lazy(() => import('./components/section/Experience'))
+const Skills = lazy(() => import('./components/section/Skills'))
+const Footer = lazy(() => import('./components/Footer'))
 
-function AppContent() {
-  console.log('AppContent rendering...');
+function HomePage() {
   const { isDarkMode } = useDarkMode();
-  console.log('Dark mode:', isDarkMode);
+  const themeColors = useThemeColors();
 
-  try {
-    return (
-      <>
-        <Navigation />
-        <div style={{ backgroundColor: isDarkMode ? '#101727' : '#fff' }}>
-          <About />
-          <Footer />
-        </div>
-      </>
-    )
-  } catch (e) {
-    console.error('AppContent error:', e);
-    throw e;
-  }
-}
-
-function App() {
-  console.log('App rendering...');
   return (
-    <ErrorBoundary>
-      <DarkModeProvider>
-        <AppContent />
-      </DarkModeProvider>
-    </ErrorBoundary>
+    <>
+      <About />
+      <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading Projects...</div>}>
+        <Projects />
+      </Suspense>
+      <Suspense fallback={<div className="h-64 flex items-center justify-center">Loading Experience...</div>}>
+        <Experience />
+      </Suspense>
+      {/* Divider */}
+      <div className="w-full py-8 relative" style={{
+        background: isDarkMode ? themeColors.background.gradientEnd : colors.white,
+        transition: 'background 0.3s ease-in-out'
+      }}>
+        <div
+          className="absolute top-0 left-0 right-0 pointer-events-none"
+          style={{
+            height: '60px',
+            background: isDarkMode
+              ? `linear-gradient(180deg, ${themeColors.background.gradientEnd} 0%, transparent 100%)`
+              : `linear-gradient(180deg, ${colors.white} 0%, transparent 100%)`,
+            zIndex: 1
+          }}
+        />
+        <div
+          className="absolute bottom-0 left-0 right-0 pointer-events-none"
+          style={{
+            height: '200px',
+            background: isDarkMode
+              ? `linear-gradient(180deg, transparent 0%, ${themeColors.background.gradientEnd} 100%)`
+              : `linear-gradient(180deg, transparent 0%, ${colors.pink[25]} 100%)`,
+            zIndex: 1
+          }}
+        />
+        <img
+          src={divider}
+          alt="Section divider"
+          className="w-full h-auto relative"
+          style={{
+            zIndex: 2,
+            filter: isDarkMode ? 'invert(1) hue-rotate(180deg)' : 'none',
+            opacity: isDarkMode ? 0.7 : 1
+          }}
+          width="1200"
+          height="100"
+          loading="lazy"
+        />
+      </div>
+      <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading Skills...</div>}>
+        <Skills />
+      </Suspense>
+    </>
   )
 }
 
-console.log('App.tsx loaded');
+function AppContent() {
+  const { isDarkMode } = useDarkMode();
+
+  return (
+    <>
+      <Navigation />
+      <div className="app transition-colors duration-300" style={{ backgroundColor: isDarkMode ? '#101727' : undefined }}>
+        <a href="#main-content" className="skip-link">Skip to main content</a>
+        <main id="main-content" className="main-content">
+          <Suspense fallback={<div className="flex items-center justify-center min-h-screen">Loading...</div>}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/contact" element={<Contact />} />
+            </Routes>
+          </Suspense>
+        </main>
+        <Suspense fallback={<div className="h-32 flex items-center justify-center">Loading Footer...</div>}>
+          <Footer />
+        </Suspense>
+      </div>
+    </>
+  )
+}
+
+function App() {
+  return (
+    <DarkModeProvider>
+      <AppContent />
+    </DarkModeProvider>
+  )
+}
+
 export default App
