@@ -23,14 +23,6 @@ function HomePage() {
   const { isDarkMode } = useDarkMode();
   const themeColors = useThemeColors();
 
-    console.log('=== DEBUG ===');
-    console.log('isDarkMode:', isDarkMode, typeof isDarkMode);
-    console.log('themeColors:', themeColors);
-    console.log('themeColors.background:', themeColors?.background);
-    console.log('gradientEnd:', themeColors?.background?.gradientEnd, '| type:', typeof themeColors?.background?.gradientEnd);
-    console.log('colors.white:', colors.white, typeof colors.white);
-    console.log('colors.pink[25]:', colors.pink[25], typeof colors.pink[25]);
-
   return (
     <>
       <About />
@@ -83,9 +75,6 @@ function HomePage() {
       </div>
       <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading...</div>}>
         <Skills />
-      </Suspense>
-      <Suspense fallback={<div className="h-64 flex items-center justify-center">Loading...</div>}>
-        
       </Suspense>
     </>
   )
