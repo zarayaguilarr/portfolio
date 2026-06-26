@@ -4,42 +4,22 @@ import { useGesture } from "@use-gesture/react";
 // Import all techstack icons
 import { techStackIcons } from "../../assets/techstack";
 
-// Destructure for backwards compatibility with existing code
+// Destructure only the icons we actually have files for
 const {
-    AWSLight: AWS,
-    Bootstrap,
-    C,
-    CPP,
-    CS,
-    CSS,
-    DartLight: Dart,
-    Docker,
-    Electron,
-    ExpressJSLight: ExpressJS,
-    FlutterLight: Flutter,
     GithubLight: Github,
-    GraphQLLight: GraphQL,
     HTML,
     JavaLight: Java,
     JavaScript,
-    JQuery,
-    LaTeXLight: LaTeX,
-    MaterialUILight: MaterialUI,
-    MongoDB,
     NodeJSLight: NodeJS,
-    NotionLight: Notion,
-    NpmLight: Npm,
-    Postman,
-    ReactLight: ReactIcon,
-    RedisLight: Redis,
-    StackOverflowLight: StackOverflow,
-    TailwindCSSLight: TailwindCSS,
-    TensorFlowLight: TensorFlow,
-    ThreeJSLight: ThreeJS,
-    TypeScript,
-    UnityLight: Unity,
-    VercelLight: Vercel,
-    ViteLight: Vite,
+    Python,
+    RStudio,
+    Excel,
+    Westlaw,
+    GoogleWorkspace,
+    MicrosoftOffice,
+    Stata,
+    Wordpress,
+    Julia,
 } = techStackIcons;
 
 type ImageItem = string | { src: string; alt?: string };
@@ -74,40 +54,20 @@ type ItemDef = {
 };
 
 const DEFAULT_IMAGES: ImageItem[] = [
-    { src: JavaScript, alt: "JavaScript" },
-    { src: TypeScript, alt: "TypeScript" },
-    { src: NodeJS, alt: "Node.js" },
     { src: HTML, alt: "HTML" },
-    { src: CSS, alt: "CSS" },
-    { src: Unity, alt: "Unity" },
-    { src: TailwindCSS, alt: "Tailwind CSS" },
-    { src: MongoDB, alt: "MongoDB" },
-    { src: ExpressJS, alt: "Express.js" },
-    { src: Docker, alt: "Docker" },
-    { src: GraphQL, alt: "GraphQL" },
-    { src: Redis, alt: "Redis" },
-    { src: C, alt: "C" },
-    { src: Flutter, alt: "Flutter" },
-    { src: Dart, alt: "Dart" },
-    { src: MaterialUI, alt: "Material UI" },
-    { src: Electron, alt: "Electron" },
-    { src: TensorFlow, alt: "TensorFlow" },
-    { src: ThreeJS, alt: "Three.js" },
-    { src: Vite, alt: "Vite" },
-    { src: Vercel, alt: "Vercel" },
-    { src: Bootstrap, alt: "Bootstrap" },
-    { src: JQuery, alt: "jQuery" },
+    { src: JavaScript, alt: "JavaScript" },
+    { src: NodeJS, alt: "Node.js" },
     { src: Java, alt: "Java" },
-    { src: ReactIcon, alt: "React" },
-    { src: CS, alt: "C#" },
-    { src: AWS, alt: "AWS" },
     { src: Github, alt: "GitHub" },
-    { src: Postman, alt: "Postman" },
-    { src: CPP, alt: "C++" },
-    { src: Npm, alt: "npm" },
-    { src: Notion, alt: "Notion" },
-    { src: LaTeX, alt: "LaTeX" },
-    { src: StackOverflow, alt: "Stack Overflow" },
+    { src: Python, alt: "Python" },
+    { src: RStudio, alt: "R Studio" },
+    { src: Excel, alt: "Excel" },
+    { src: Westlaw, alt: "Westlaw" },
+    { src: GoogleWorkspace, alt: "Google Workspace" },
+    { src: MicrosoftOffice, alt: "Microsoft Office" },
+    { src: Stata, alt: "Stata" },
+    { src: Wordpress, alt: "Wordpress" },
+    { src: Julia, alt: "Julia" }
 ];
 
 const DEFAULTS = {
@@ -310,18 +270,15 @@ export default function DomeGallery({
             );
             applyTransform(rotationRef.current.x, rotationRef.current.y);
 
-            // Only perform expensive DOM calculations when overlay exists
             const enlargedOverlay = viewerRef.current?.querySelector(
                 ".enlarge"
             ) as HTMLElement;
             if (enlargedOverlay && frameRef.current && mainRef.current) {
-                // Batch DOM reads to minimize layout thrashing
                 const frameR = frameRef.current.getBoundingClientRect();
                 const mainR = mainRef.current.getBoundingClientRect();
 
                 const hasCustomSize = openedImageWidth && openedImageHeight;
                 if (hasCustomSize) {
-                    // Use CSS calculations instead of DOM manipulation when possible
                     const tempDiv = document.createElement("div");
                     tempDiv.style.cssText = `position: absolute; width: ${openedImageWidth}; height: ${openedImageHeight}; visibility: hidden; top: -9999px;`;
                     document.body.appendChild(tempDiv);
@@ -333,13 +290,11 @@ export default function DomeGallery({
                     const centeredTop =
                         frameR.top - mainR.top + (frameR.height - tempRect.height) / 2;
 
-                    // Batch DOM writes
                     Object.assign(enlargedOverlay.style, {
                         left: `${centeredLeft}px`,
                         top: `${centeredTop}px`
                     });
                 } else {
-                    // Batch DOM writes
                     Object.assign(enlargedOverlay.style, {
                         left: `${frameR.left - mainR.left}px`,
                         top: `${frameR.top - mainR.top}px`,

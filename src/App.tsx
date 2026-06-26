@@ -10,18 +10,26 @@ import './App.css'
 
 // Lazy load project pages - add your project page imports here
 // Example: const MyProject = lazy(() => import('./pages/projects/MyProject'))
-const Contact = lazy(() => import('./pages/Contact'))
+// Ensure the loaded module is normalized to have a default export for React.lazy
+const Contact = lazy(() => import('./pages/Contact').then(m => ({ default: (m as any).default ?? (m as any).Contact ?? (m as any) })))
 
 // Lazy load below-the-fold components for better initial load
-const Projects = lazy(() => import('./components/section/Projects'))
-const Experience = lazy(() => import('./components/section/Experience'))
-const Skills = lazy(() => import('./components/section/Skills'))
-const Certifications = lazy(() => import('./components/section/Certifications'))
-const Footer = lazy(() => import('./components/Footer'))
+const Projects = lazy(() => import('./components/section/Projects').then(m => ({ default: (m as any).default ?? (m as any).Projects ?? (m as any) })))
+const Experience = lazy(() => import('./components/section/Experience').then(m => ({ default: (m as any).default ?? (m as any).Experience ?? (m as any) })))
+const Skills = lazy(() => import('./components/section/Skills').then(m => ({ default: (m as any).default ?? (m as any).Skills ?? (m as any) })))
+const Footer = lazy(() => import('./components/Footer').then(m => ({ default: (m as any).default ?? (m as any).Footer ?? (m as any) })))
 
 function HomePage() {
   const { isDarkMode } = useDarkMode();
   const themeColors = useThemeColors();
+
+    console.log('=== DEBUG ===');
+    console.log('isDarkMode:', isDarkMode, typeof isDarkMode);
+    console.log('themeColors:', themeColors);
+    console.log('themeColors.background:', themeColors?.background);
+    console.log('gradientEnd:', themeColors?.background?.gradientEnd, '| type:', typeof themeColors?.background?.gradientEnd);
+    console.log('colors.white:', colors.white, typeof colors.white);
+    console.log('colors.pink[25]:', colors.pink[25], typeof colors.pink[25]);
 
   return (
     <>
@@ -55,7 +63,7 @@ function HomePage() {
             height: '200px',
             background: isDarkMode 
               ? `linear-gradient(180deg, transparent 0%, ${themeColors.background.gradientEnd} 100%)`
-              : `linear-gradient(180deg, transparent 0%, ${themeColors.colors.pink[25]} 100%)`,
+              : `linear-gradient(180deg, transparent 0%, ${colors.pink[25]} 100%)`,
             zIndex: 1
           }}
         />
@@ -77,7 +85,7 @@ function HomePage() {
         <Skills />
       </Suspense>
       <Suspense fallback={<div className="h-64 flex items-center justify-center">Loading...</div>}>
-        <Certifications />
+        
       </Suspense>
     </>
   )

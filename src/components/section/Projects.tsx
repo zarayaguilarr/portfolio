@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { useDarkMode } from '../../contexts/DarkModeContext';
 import { useThemeColors } from '../../hooks/useThemeColors';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
@@ -9,6 +8,10 @@ import { ExternalLink, Code, Heart, ChevronLeft, ChevronRight } from 'lucide-rea
 import { socialLinks } from '../../config/socialLinks';
 import { lightStars, darkStars, specialStars } from '../../assets/stars';
 import { comingSoon } from '../../assets';
+import projectOnePdf from '../project/project-one.pdf';
+import projectTwoPdf from '../project/project-two.pdf';
+import projectThreePdf from '../project/project-three.pdf';
+import projectFourPdf from '../project/project-four.pdf';
 
 const Projects = () => {
   const { isDarkMode } = useDarkMode();
@@ -229,35 +232,35 @@ const Projects = () => {
   // project data - these are the main cards
   const projects = [
     {
-      title: "Project One",
-      description: "A brief description of your first project. Highlight the key features and what makes it unique.",
-      technologies: ["React", "TypeScript", "Node.js", "MongoDB"],
+      title: "Relationship between Chamber Advantage and Legislative Productivity",
+      description: " a quantitative analysis examining the relationship between chamber advantage and legislative productivity in the United States Congress using official legislative data.",
+      technologies: ["R", "R Studio" , "Group Project"],
       icon: comingSoon,
-      detailsUrl: "/projects/project-one",
+      detailsUrl: projectOnePdf,
       githubUrl: socialLinks.repositories.projectOne
     },
     {
-      title: "Project Two",
-      description: "A brief description of your second project. Highlight the key features and what makes it unique.",
-      technologies: ["Python", "Flask", "PostgreSQL", "Docker"],
+      title: "Graduation Disparities: Exploring Minority Group in Higher Education",
+      description: "A quantitative analysis using institutional datasets to evaluate how minority enrollment, SAT averages, and institutional size correlate with graduation rate disparities across U.S. universities.",
+      technologies: ["R", "R Studio"],
       icon: comingSoon,
-      detailsUrl: "/projects/project-two",
+      detailsUrl: projectTwoPdf,
       githubUrl: socialLinks.repositories.projectTwo
     },
     {
-      title: "Project Three",
-      description: "A brief description of your third project. Highlight the key features and what makes it unique.",
-      technologies: ["JavaScript", "Express", "AWS", "Tailwind CSS"],
+      title: "Electoral Cycle and Congressional Activity in Brazil (1994-2022)",
+      description: "A text-as-data analysis of Brazilian congressional bills from 1994 - 2022 to examine how legislative agendas shift in the year preceding national elections.",
+      technologies: ["R" , "R Studio" , "Group Project"],
       icon: comingSoon,
-      detailsUrl: "/projects/project-three",
+      detailsUrl: projectThreePdf,
       githubUrl: socialLinks.repositories.projectThree
     },
     {
-      title: "Project Four",
-      description: "A brief description of your fourth project. Highlight the key features and what makes it unique.",
-      technologies: ["C++", "CMake", "OpenGL"],
+      title: "From the Shadows: Combating Gender-Based Violence and Femicide in Mexico ",
+      description: "Policy brief analyzing the rise of gender-based violence and femicide in Mexico, proposing comprehensive legislative and support-system reforms modeled after Spain's integrated protection framework.",
+      technologies: ["Policy Research"],
       icon: comingSoon,
-      detailsUrl: "/projects/project-four",
+      detailsUrl: projectFourPdf,
       githubUrl: socialLinks.repositories.projectFour
     }
   ];
@@ -494,10 +497,10 @@ const Projects = () => {
                     ))}
                   </div>
                   <div className="flex gap-3" style={{ marginTop: 'auto', paddingTop: '8px' }}>
-                    <Link to={project.detailsUrl} className="project-btn flex items-center gap-1" style={{ textDecoration: 'none', color: 'white' }} aria-label={`View ${project.title} project details`}>
+                    <a href={project.detailsUrl} target="_blank" rel="noopener noreferrer" className="project-btn flex items-center gap-1" style={{ textDecoration: 'none', color: 'white' }} aria-label={`View ${project.title} project details`}>
                       <ExternalLink className="h-4 w-4" aria-hidden="true" />
                       Details
-                    </Link>
+                    </a>
                     <a href={project.githubUrl} className="project-btn-outline flex items-center gap-1" style={{ textDecoration: 'none' }} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} source code on GitHub`}>
                       <Code className="h-4 w-4" aria-hidden="true" />
                       Code
