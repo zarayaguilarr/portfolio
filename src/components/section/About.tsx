@@ -2,11 +2,10 @@ import { useEffect, useState, useRef } from 'react';
 import AsciiMorphText from '../AsciiMorphText';
 import TypewriterCarousel from '../TypewriterCarousel';
 import { useDarkMode } from '../../contexts/DarkModeContext';
-import { useThemeColors, withAlpha } from '../../hooks/useThemeColors';
-import { aboutMeJournal, profile1, profile2, profile3, stickers as stickerImages } from '../../assets';
+import { useThemeColors } from '../../hooks/useThemeColors';
+import { aboutMeJournal, profile1, profile2, profile3 } from '../../assets';
 
 const About = () => {
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [asciiText, setAsciiText] = useState('');
   const [journalPhotoIndex, setJournalPhotoIndex] = useState(0);
 

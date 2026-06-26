@@ -340,3 +340,5 @@ scripts/.cache/
 # GitHub files
 .github/
 .gitlab/
+.vercel
+.env*
