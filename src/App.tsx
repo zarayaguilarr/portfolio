@@ -1,6 +1,7 @@
 import { DarkModeProvider, useDarkMode } from './contexts/DarkModeContext'
 import Navigation from './components/section/Navigation'
 import About from './components/section/About'
+import Footer from './components/Footer'
 
 function Content() {
   const { isDarkMode } = useDarkMode();
@@ -9,6 +10,7 @@ function Content() {
       <Navigation />
       <div style={{ backgroundColor: isDarkMode ? '#1a1a1a' : '#fff' }}>
         <About />
+        <Footer />
       </div>
     </>
   )
