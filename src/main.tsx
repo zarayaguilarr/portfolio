@@ -4,10 +4,19 @@ import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import App from './App.tsx'
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </StrictMode>,
-)
+console.log('Portfolio app starting...');
+const root = document.getElementById('root');
+console.log('Root element:', root);
+
+try {
+  createRoot(root!).render(
+    <StrictMode>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </StrictMode>,
+  );
+  console.log('Portfolio app rendered successfully');
+} catch (e) {
+  console.error('Failed to render app:', e);
+}

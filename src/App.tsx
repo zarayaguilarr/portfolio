@@ -6,6 +6,7 @@ import { colors } from './styles/colors'
 import Navigation from './components/section/Navigation'
 import About from './components/section/About'
 import { divider } from './assets'
+import { ErrorBoundary } from './components/ErrorBoundary'
 import './App.css'
 
 // Lazy load project pages - add your project page imports here
@@ -108,9 +109,11 @@ function AppContent() {
 
 function App() {
   return (
-    <DarkModeProvider>
-      <AppContent />
-    </DarkModeProvider>
+    <ErrorBoundary>
+      <DarkModeProvider>
+        <AppContent />
+      </DarkModeProvider>
+    </ErrorBoundary>
   )
 }
 
