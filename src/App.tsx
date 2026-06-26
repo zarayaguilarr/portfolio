@@ -31,11 +31,17 @@ export default function App() {
           <p><strong>Data Analytics</strong> - Policy analysis and insights</p>
         </div>
 
-        <div style={{ marginBottom: '40px' }}>
-          <h2 style={{ color: '#C88B95', marginBottom: '15px' }}>Contact</h2>
-          <p>📧 <a href="mailto:naweidh.03@gmail.com" style={{ color: '#C88B95', textDecoration: 'none', fontWeight: 'bold' }}>naweidh.03@gmail.com</a></p>
-          <p>🔗 <a href="https://github.com/zarayaguilarr" target="_blank" rel="noopener noreferrer" style={{ color: '#C88B95', textDecoration: 'none', fontWeight: 'bold' }}>GitHub</a></p>
-          <p>💼 <a href="https://linkedin.com/in/zarayaguilar" target="_blank" rel="noopener noreferrer" style={{ color: '#C88B95', textDecoration: 'none', fontWeight: 'bold' }}>LinkedIn</a></p>
+        <div style={{ marginBottom: '40px', padding: '30px', backgroundColor: '#f5f5f5', borderRadius: '12px' }}>
+          <h2 style={{ color: '#C88B95', marginBottom: '20px' }}>Let's Connect</h2>
+          <p style={{ marginBottom: '15px', fontSize: '18px' }}>
+            📧 Email: <span style={{ color: '#C88B95', fontWeight: 'bold' }}>naweidh.03@gmail.com</span>
+          </p>
+          <p style={{ marginBottom: '15px', fontSize: '18px' }}>
+            🔗 GitHub: <span style={{ color: '#C88B95', fontWeight: 'bold' }}>github.com/zarayaguilarr</span>
+          </p>
+          <p style={{ fontSize: '18px' }}>
+            💼 LinkedIn: <span style={{ color: '#C88B95', fontWeight: 'bold' }}>linkedin.com/in/zarayaguilar</span>
+          </p>
         </div>
       </div>
     </div>
