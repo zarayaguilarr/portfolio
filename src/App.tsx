@@ -2,8 +2,6 @@ import { Routes, Route } from 'react-router-dom'
 import { DarkModeProvider, useDarkMode } from './contexts/DarkModeContext'
 import Navigation from './components/section/Navigation'
 import About from './components/section/About'
-import Experience from './components/section/Experience'
-import Skills from './components/section/Skills'
 import Footer from './components/Footer'
 import Contact from './pages/Contact'
 
@@ -11,8 +9,6 @@ function HomePage() {
   return (
     <>
       <About />
-      <Experience />
-      <Skills />
     </>
   )
 }
