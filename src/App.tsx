@@ -2,7 +2,6 @@ import { Routes, Route } from 'react-router-dom'
 import { DarkModeProvider, useDarkMode } from './contexts/DarkModeContext'
 import Navigation from './components/section/Navigation'
 import About from './components/section/About'
-import Projects from './components/section/Projects'
 import { ErrorBoundary } from './components/ErrorBoundary'
 import './App.css'
 
@@ -10,7 +9,6 @@ function HomePage() {
   return (
     <>
       <About />
-      <Projects />
     </>
   )
 }
