@@ -9,13 +9,12 @@ import { divider } from './assets'
 import { ErrorBoundary } from './components/ErrorBoundary'
 import './App.css'
 
-const Contact = lazy(() => import('./pages/Contact'))
-
-// Lazy load below-the-fold components for better initial load
-const Projects = lazy(() => import('./components/section/Projects'))
-const Experience = lazy(() => import('./components/section/Experience'))
-const Skills = lazy(() => import('./components/section/Skills'))
-const Footer = lazy(() => import('./components/Footer'))
+// Temporarily disable lazy loading to isolate issue
+import Contact from './pages/Contact'
+import Projects from './components/section/Projects'
+import Experience from './components/section/Experience'
+import Skills from './components/section/Skills'
+import Footer from './components/Footer'
 
 function HomePage() {
   const { isDarkMode } = useDarkMode();
@@ -24,12 +23,8 @@ function HomePage() {
   return (
     <>
       <About />
-      <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading...</div>}>
-        <Projects />
-      </Suspense>
-      <Suspense fallback={<div className="h-64 flex items-center justify-center">Loading...</div>}>
-        <Experience />
-      </Suspense>
+      <Projects />
+      <Experience />
       {/* Divider with gradient transitions */}
       <div className="w-full py-8 relative" style={{
         background: isDarkMode ? themeColors.background.gradientEnd : colors.white,
@@ -47,11 +42,11 @@ function HomePage() {
           }}
         />
         {/* Bottom gradient overlay to blend with Skills section */}
-        <div 
+        <div
           className="absolute bottom-0 left-0 right-0 pointer-events-none"
           style={{
             height: '200px',
-            background: isDarkMode 
+            background: isDarkMode
               ? `linear-gradient(180deg, transparent 0%, ${themeColors.background.gradientEnd} 100%)`
               : `linear-gradient(180deg, transparent 0%, ${colors.pink[25]} 100%)`,
             zIndex: 1
@@ -71,9 +66,7 @@ function HomePage() {
           loading="lazy"
         />
       </div>
-      <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading...</div>}>
-        <Skills />
-      </Suspense>
+      <Skills />
     </>
   )
 }
@@ -87,18 +80,14 @@ function AppContent() {
       <div className="app transition-colors duration-300" style={{ backgroundColor: isDarkMode ? '#101727' : undefined }}>
         <a href="#main-content" className="skip-link">Skip to main content</a>
         <main id="main-content" className="main-content">
-          <Suspense fallback={<div className="flex items-center justify-center min-h-screen">Loading...</div>}>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/contact" element={<Contact />} />
-              {/* Add your project routes here */}
-              {/* Example: <Route path="/projects/my-project" element={<MyProject />} /> */}
-            </Routes>
-          </Suspense>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/contact" element={<Contact />} />
+            {/* Add your project routes here */}
+            {/* Example: <Route path="/projects/my-project" element={<MyProject />} /> */}
+          </Routes>
         </main>
-        <Suspense fallback={<div className="h-32 flex items-center justify-center">Loading...</div>}>
-          <Footer />
-        </Suspense>
+        <Footer />
       </div>
     </>
   )

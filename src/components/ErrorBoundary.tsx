@@ -20,7 +20,9 @@ export class ErrorBoundary extends React.Component<Props, State> {
   }
 
   componentDidCatch(error: Error, info: React.ErrorInfo) {
-    console.error('Portfolio Error:', error, info);
+    console.error('Portfolio Error:', error);
+    console.error('Stack:', error.stack);
+    console.error('Component Stack:', info.componentStack);
   }
 
   render() {
