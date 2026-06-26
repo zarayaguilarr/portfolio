@@ -1,13 +1,20 @@
+import { Routes, Route } from 'react-router-dom'
+import { DarkModeProvider } from './contexts/DarkModeContext'
 import { ErrorBoundary } from './components/ErrorBoundary'
 import './App.css'
+
+function HomePage() {
+  return <div style={{ padding: '20px' }}>Home Page</div>
+}
 
 function App() {
   return (
     <ErrorBoundary>
-      <div style={{ padding: '20px', textAlign: 'center' }}>
-        <h1>Testing app rendering...</h1>
-        <p>If you see this, the basic app is working!</p>
-      </div>
+      <DarkModeProvider>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+        </Routes>
+      </DarkModeProvider>
     </ErrorBoundary>
   )
 }
