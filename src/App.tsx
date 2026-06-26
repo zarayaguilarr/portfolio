@@ -9,16 +9,13 @@ import { divider } from './assets'
 import { ErrorBoundary } from './components/ErrorBoundary'
 import './App.css'
 
-// Lazy load project pages - add your project page imports here
-// Example: const MyProject = lazy(() => import('./pages/projects/MyProject'))
-// Ensure the loaded module is normalized to have a default export for React.lazy
-const Contact = lazy(() => import('./pages/Contact').then(m => ({ default: (m as any).default ?? (m as any).Contact ?? (m as any) })))
+const Contact = lazy(() => import('./pages/Contact'))
 
 // Lazy load below-the-fold components for better initial load
-const Projects = lazy(() => import('./components/section/Projects').then(m => ({ default: (m as any).default ?? (m as any).Projects ?? (m as any) })))
-const Experience = lazy(() => import('./components/section/Experience').then(m => ({ default: (m as any).default ?? (m as any).Experience ?? (m as any) })))
-const Skills = lazy(() => import('./components/section/Skills').then(m => ({ default: (m as any).default ?? (m as any).Skills ?? (m as any) })))
-const Footer = lazy(() => import('./components/Footer').then(m => ({ default: (m as any).default ?? (m as any).Footer ?? (m as any) })))
+const Projects = lazy(() => import('./components/section/Projects'))
+const Experience = lazy(() => import('./components/section/Experience'))
+const Skills = lazy(() => import('./components/section/Skills'))
+const Footer = lazy(() => import('./components/Footer'))
 
 function HomePage() {
   const { isDarkMode } = useDarkMode();
