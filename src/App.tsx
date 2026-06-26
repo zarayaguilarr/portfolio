@@ -31,6 +31,13 @@ export default function App() {
           <p><strong>Data Analytics</strong> - Policy analysis and insights</p>
         </div>
 
+        <div style={{ marginBottom: '40px' }}>
+          <h2 style={{ color: '#C88B95', marginBottom: '15px' }}>Projects</h2>
+          <p><strong>Policy Analysis Project</strong> - Data-driven insights for public health initiatives</p>
+          <p><strong>Research Papers</strong> - Published work on healthcare policy and data ethics</p>
+          <p><strong>Data Visualization</strong> - Creating compelling data stories for policy makers</p>
+        </div>
+
         <div style={{ marginBottom: '40px', padding: '30px', backgroundColor: '#f5f5f5', borderRadius: '12px' }}>
           <h2 style={{ color: '#C88B95', marginBottom: '20px' }}>Let's Connect</h2>
           <p style={{ marginBottom: '15px', fontSize: '18px' }}>
