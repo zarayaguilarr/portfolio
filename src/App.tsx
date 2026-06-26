@@ -1,11 +1,17 @@
 import { Routes, Route } from 'react-router-dom'
 import { DarkModeProvider, useDarkMode } from './contexts/DarkModeContext'
 import Navigation from './components/section/Navigation'
+import About from './components/section/About'
 import { ErrorBoundary } from './components/ErrorBoundary'
 import './App.css'
 
 function HomePage() {
-  return <div style={{ padding: '20px', marginTop: '80px' }}>Home Page</div>
+  return (
+    <>
+      <About />
+      <div style={{ padding: '20px', minHeight: '500px' }}>More content here</div>
+    </>
+  )
 }
 
 function AppContent() {
