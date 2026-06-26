@@ -1,4 +1,3 @@
-import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { DarkModeProvider, useDarkMode } from './contexts/DarkModeContext'
 import { useThemeColors } from './hooks/useThemeColors'
