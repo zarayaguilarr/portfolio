@@ -1,14 +1,14 @@
 import { DarkModeProvider, useDarkMode } from './contexts/DarkModeContext'
 import Navigation from './components/section/Navigation'
+import About from './components/section/About'
 
 function Content() {
   const { isDarkMode } = useDarkMode();
   return (
     <>
       <Navigation />
-      <div style={{ padding: '40px', textAlign: 'center', backgroundColor: isDarkMode ? '#1a1a1a' : '#fff', color: isDarkMode ? '#fff' : '#000', minHeight: '100vh', marginTop: '80px' }}>
-        <h1>Portfolio with Navigation</h1>
-        <p>Dark mode: {isDarkMode ? 'ON' : 'OFF'}</p>
+      <div style={{ backgroundColor: isDarkMode ? '#1a1a1a' : '#fff' }}>
+        <About />
       </div>
     </>
   )
