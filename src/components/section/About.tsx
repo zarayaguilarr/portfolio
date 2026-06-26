@@ -24,37 +24,133 @@ const About = () => {
   const profileImages = [
     { src: profile1, caption: "UC San Diego Graduate" },
     { src: profile2, caption: "Visit to the Bay Area" },
-    { src: profile3, caption: " Museum" }
+    { src: profile3, caption: "Visit to Museum" }
   ];
 
-  // placeholder paragraph for the right page — swap this out with your own bio whenever you're ready
-  const aboutMeText = `I graduated from the University of California San Diego with a B.A. in Sociology - Science & Medicine and a B.S. in Political Science/Data Analytics. I also earned a Paralegal Certificate from UCLA Extension. In Fall 2026, I’ll be attending Georgetown University as a master's student in the Data Science for Public Policy program. My interests are in public policy, data science, and healthcare policy, and I’m especially interested in how data can be used to inform policy decisions and improve public outcomes.`;
+  // placeholder paragraph for the right page
+const aboutMeText = `I graduated from the University of California San Diego with a B.A. in Sociology - Science & Medicine and a B.S. in Political Science/Data Analytics. I also earned a Paralegal Certificate from UCLA Extension. In Fall 2026, I’ll be attending Georgetown University as a master's student in the Data Science for Public Policy program. My interests are in public policy, data science, and healthcare policy, and I’m especially interested in how data can be used to inform policy decisions and improve public outcomes.`;
+  // Multiple ASCII art pieces that cycle: type, pause 8s, erase, type next, loop forever
+  const asciiArtPieces = [
+    `⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⣀⣠⣤⡔⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡴⣧
+⠀⠀⣀⣤⣶⣿⣿⣿⣿⣏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡾⠁⣼
+⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⢷⣆⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⡟⠀⠀⣿
+⣾⣿⣿⣟⢛⣛⣛⣛⣋⠭⠥⠿⣿⣿⣷⣤⠀⠀⠀⢀⣀⣀⣠⣀⡀⢿⡇⠀⣸⡇
+⣿⣿⣿⠻⢧⠙⢯⡀⠈⠉⠙⠛⠳⢦⣝⢿⣷⢠⣾⣿⣿⣿⣿⣿⣯⣬⡥⢰⡟⠀
+⢹⣯⣛⠯⢿⣾⣷⣍⡳⣤⣀⠀⠀⠀⠉⠳⣍⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡃⠀⠀
+⠈⠹⣿⣿⣾⣿⣿⣿⣿⣷⣭⣛⠷⢦⣤⣤⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⠀⠀
+⠀⠀⠈⠛⠿⣿⣿⣿⣿⣿⢋⣵⡾⣣⣤⣦⢻⣿⣿⣿⣻⠻⣿⣿⣿⡏⠖⢻⠀⠀
+⠀⠀⠀⠀⠀⠀⠈⠉⠉⣱⣿⡟⠼⣻⣿⣿⢸⣿⣿⡇⡛⠀⣿⣿⣿⣧⡠⣸⡇⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⣷⢹⣿⣿⣿⣏⢿⣿⣷⣕⣧⣿⣿⣿⢿⣿⡿⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠸⣿⣿⣿⣠⢿⣿⡟⣿⣷⣭⣻⠿⢿⠿⠷⢞⣫⣵⠿⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⣿⡟⣎⢿⣧⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠸⣿⣿⣿⠁⠻⣷⡝⣩⣿⣿⣿⣿⣿⣿⣿⠿⠁⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣿⣿⠀⠀⠀⠀⣿⣿⣿⠉⠙⢻⢟⣿⡇⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⣿⣿⡀⠀⠸⣿⣿⡇⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢿⢿⡧⠀⠀⠈⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀`,
+    `⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡴⠞⢳⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡔⠋⠀⢰⠎⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⢆⣤⡞⠃⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⢠⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⢀⣀⣾⢳⠀⠀⠀⠀⢸⢠⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⣀⡤⠴⠊⠉⠀⠀⠈⠳⡀⠀⠀⠘⢎⠢⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀
+⠳⣄⠀⠀⡠⡤⡀⠀⠘⣇⡀⠀⠀⠀⠉⠓⠒⠺⠭⢵⣦⡀⠀⠀⠀
+⠀⢹⡆⠀⢷⡇⠁⠀⠀⣸⠇⠀⠀⠀⠀⠀⢠⢤⠀⠀⠘⢷⣆⡀⠀
+⠀⠀⠘⠒⢤⡄⠖⢾⣭⣤⣄⠀⡔⢢⠀⡀⠎⣸⠀⠀⠀⠀⠹⣿⡀
+⠀⠀⢀⡤⠜⠃⠀⠀⠘⠛⣿⢸⠀⡼⢠⠃⣤⡟⠀⠀⠀⠀⠀⣿⡇
+⠀⠀⠸⠶⠖⢏⠀⠀⢀⡤⠤⠇⣴⠏⡾⢱⡏⠁⠀⠀⠀⠀⢠⣿⠃
+⠀⠀⠀⠀⠀⠈⣇⡀⠿⠀⠀⠀⡽⣰⢶⡼⠇⠀⠀⠀⠀⣠⣿⠟⠀
+⠀⠀⠀⠀⠀⠀⠈⠳⢤⣀⡶⠤⣷⣅⡀⠀⠀⠀⣀⡠⢔⠕⠁⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠫⠿⠿⠿⠛⠋⠁⠀⠀⠀⠀`,
+    `⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⡠⠖⢉⣌⢆⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⣠⠚⠉⠀⠈⠉⠲⣿⣿⡜⡀⠀⠀⠀⠀
+⡔⢉⣙⣓⣒⡲⠮⡇⠀⠀⠀⠀⠀⠀⠘⡿⡇⡇⠀⠀⠀⠀
+⡇⠘⣿⣿⣿⠏⠀⠀⠠⣀⡀⠀⠀⠀⠀⡇⠈⠳⡄⠀⠀⠀
+⢹⠀⢻⣿⠇⠀⠀⣀⣀⠀⡍⠃⠀⠀⣠⣷⡟⢳⡜⡄⠀⠀
+⠈⣆⠀⠋⢀⢔⣵⣿⠋⠹⣿⠒⠒⠚⠁⣿⣿⣾⣷⢸⠤⡄
+⠀⡇⠀⠀⢸⢸⣿⣿⣶⣾⡏⡇⠀⠀⢀⡘⣝⠿⡻⢸⡰⠁
+⠀⢳⠀⠀⠈⢆⠻⢿⡿⠟⡱⠁⠰⠛⢿⡇⠀⠉⠀⡸⠁⠀
+⠀⠈⢆⠀⠀⠀⠉⠒⠒⣉⡀⠀⠀⢇⠀⡇⠀⠀⢠⠃⠀⠀
+⠀⠀⠈⠣⡀⠀⠀⠀⠀⠀⢉⡱⠀⠀⠉⠀⢀⡴⠁⠀⠀⠀
+⠀⠀⠀⠀⠈⠓⠦⣀⣉⡉⠁⢀⣀⣠⠤⠒⠥⣄⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠰⣉⣀⣀⡠⠭⠛⠀⠀⠑⠒⠤⠤⠷⠀⠀⠀`,
+    `⠀⠀⠀⠀⠀⠀⠀⠀⣤⡀⠀⣶⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠙⣿⣆⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠸⣷⣮⣿⣿⣄⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⢀⡠⠒⠉⠀⠀⠀⠀⠀⠀⠈⠁⠲⢖⠒⡀⠀⠀
+⠀⠀⠀⡠⠴⣏⠀⢀⡀⠀⢀⡀⠀⠀⠀⡀⠀⠀⡀⠱⡈⢄⠀
+⠀⠀⢠⠁⠀⢸⠐⠁⠀⠄⠀⢸⠀⠀⢎⠀⠂⠀⠈⡄⢡⠀⢣
+⠀⢀⠂⠀⠀⢸⠈⠢⠤⠤⠐⢁⠄⠒⠢⢁⣂⡐⠊⠀⡄⠀⠸
+⠀⡘⠀⠀⠀⢸⠀⢠⠐⠒⠈⠀⠀⠀⠀⠀⠀⠈⢆⠜⠀⠀⢸
+⠀⡇⠀⠀⠀⠀⡗⢺⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠑⡄⢀⠎
+⠀⢃⠀⠀⠀⢀⠃⢠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠷⡃⠀
+⠀⠈⠢⣤⠀⠈⠀⠀⠑⠠⠤⣀⣀⣀⣀⣀⡀⠤⠒⠁⠀⢡⠀
+⡀⣀⠀⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢘⠀
+⠑⢄⠉⢳⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡸⠀
+⠀⠀⠑⠢⢱⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡴⠁⠀
+⠀⠀⠀⠀⢀⠠⠓⠢⠤⣀⣀⡀⠀⠀⣀⣀⡀⠤⠒⠑⢄⠀⠀
+⠀⠀⠀⠰⠥⠤⢄⢀⡠⠄⡈⡀⠀⠀⣇⣀⠠⢄⠀⠒⠤⠣⠀
+⠀⠀⠀⠀⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀`,
+    `⠀⠀⠀⠀⡔⠉⠐⠢⢀⠀⠀⠀⠀⠀⠀⢀⠠⠐⠂⠉⠉⠆⠀⠀⠀⠀
+⠀⠀⠀⢰⠁⡰⠒⢤⡀⠓⢄⠀⠀⢀⠔⢓⡠⠖⠒⢢⠄⢸⠀⠀⠀⠀
+⠀⠀⠀⢠⠀⡇⠂⡈⡜⠋⠉⠁⠈⠉⣒⡫⢀⠀⠀⣾⠀⡿⠀⠀⠀⠀
+⠀⠀⠀⢨⢀⠗⠀⠘⠈⠐⣄⢀⠔⠁⠀⣃⠀⠁⠢⡃⢠⡇⠀⠀⠀⠀
+⠀⠀⣠⢈⢯⣲⢂⡭⣶⡀⠀⠁⡀⢤⠛⡵⡄⢱⢢⠙⡼⠀⡀⠀⠀⠀
+⠀⠎⠸⡈⠘⡇⢸⢳⣿⣷⣀⣁⡤⣿⣿⣟⡍⢠⡏⠀⣇⠘⠰⠀⠀⠀
+⠘⠆⠀⠈⠀⠑⢌⠟⣫⠏⢈⠡⠀⣝⠥⠚⠤⠋⠀⠀⠀⠀⡘⠀⠀⠀
+⠀⣠⣓⣈⠄⠀⠀⠀⠈⠑⣿⣿⡿⠁⠀⠀⠀⠀⠀⢌⡑⠣⡤⠀⡀⠀
+⠀⠀⠀⡁⠀⡴⢀⠀⠀⠀⠙⠭⠃⠀⠀⠀⢀⣤⠀⢀⠆⠀⠁⢀⠔⠃
+⠀⠀⠀⠑⠠⠰⠀⣭⣴⡤⣤⡤⣤⠶⣦⣭⡾⡽⠄⠊⠀⠂⠀⢸⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠘⢿⡿⠛⣴⠯⠿⣿⡟⠁⠉⠢⣀⠀⠀⣀⠎⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠉⡗⢻⡀⡽⠒⠋⠁⠀⠁⠀⢡⠈⢹⡱⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⢣⠀⠉⡇⠆⠀⢀⣿⢂⠀⠈⡄⠈⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⡄⠀⠃⢀⠀⢸⡿⠀⠡⠀⢰⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣀⡰⢌⣀⡸⠁⠀⠠⣃⠜⠀⠀⠀⠀⠀`,
 
-  const fullAsciiArt = `⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⢠⡾⠲⠶⣤⣀⣠⣤⣤⣤⡿⠛⠿⡴⠾⠛⢻⡆⠀⠀⠀
-⠀⠀⠀⣼⠁⠀⠀⠀⠉⠁⠀⢀⣿⠐⡿⣿⠿⣶⣤⣤⣷⡀⠀⠀
-⠀⠀⠀⢹⡶⠀⠀⠀⠀⠀⠀⠈⢯⣡⣿⣿⣀⣰⣿⣦⢂⡏⠀⠀
-⠀⠀⢀⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠹⣍⣭⣾⠁⠀⠀
-⠀⣀⣸⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣸⣧⣤⡀
-⠈⠉⠹⣏⡁⠀⢸⣿⠀⠀⠀⢀⡀⠀⠀⠀⣿⠆⠀⢀⣸⣇⣀⠀
-⠀⠐⠋⢻⣅⡄⢀⣀⣀⡀⠀⠯⠽⠂⢀⣀⣀⡀⠀⣤⣿⠀⠉⠀
-⠀⠀⠴⠛⠙⣳⠋⠉⠉⠙⣆⠀⠀⢰⡟⠉⠈⠙⢷⠟⠈⠙⠂⠀
-⠀⠀⠀⠀⠀⢻⣄⣠⣤⣴⠟⠛⠛⠛⢧⣤⣤⣀⡾⠀⠀⠀⠀⠀`;
-
+  ];
 
   useEffect(() => {
     let currentIndex = 0;
+    let artIndex = 0;
+    let isErasing = false;
+    let timeoutId: ReturnType<typeof setTimeout>;
 
-    const typeWriter = () => {
-      if (currentIndex < fullAsciiArt.length) {
-        setAsciiText(fullAsciiArt.substring(0, currentIndex + 1));
-        currentIndex++;
-        setTimeout(typeWriter, 3);
+    const tick = () => {
+      const currentArt = asciiArtPieces[artIndex];
+
+      if (!isErasing) {
+        // typing forward
+        if (currentIndex < currentArt.length) {
+          setAsciiText(currentArt.substring(0, currentIndex + 1));
+          currentIndex++;
+          timeoutId = setTimeout(tick, 3);
+        } else {
+          // finished typing this art — pause 8s, then start erasing
+          timeoutId = setTimeout(() => {
+            isErasing = true;
+            tick();
+          }, 8000);
+        }
+      } else {
+        // erasing backward
+        if (currentIndex > 0) {
+          currentIndex--;
+          setAsciiText(currentArt.substring(0, currentIndex));
+          timeoutId = setTimeout(tick, 1.5);
+        } else {
+          // fully erased — move to next art and start typing again
+          isErasing = false;
+          artIndex = (artIndex + 1) % asciiArtPieces.length;
+          timeoutId = setTimeout(tick, 200);
+        }
       }
     };
 
-    const startDelay = setTimeout(typeWriter, 500);
-    return () => clearTimeout(startDelay);
+    const startDelay = setTimeout(tick, 500);
+    return () => {
+      clearTimeout(startDelay);
+      clearTimeout(timeoutId);
+    };
   }, []);
 
   // rotate the journal's left-page photo every 8 seconds
@@ -104,7 +200,7 @@ const About = () => {
           <div
             className="absolute flex items-center justify-center overflow-hidden"
             style={{
-              top: '11%',
+              top: '12%',
               bottom: '12%',
               left: '8%',
               width: '38%',
@@ -127,22 +223,22 @@ const About = () => {
           <div
             className="absolute overflow-y-auto"
             style={{
-              top: '15%',
+              top: '12%',
               bottom: '12%',
-              right: '7%',
+              right: '8%',
               width: '38%',
             }}
           >
-<p
-  className="leading-relaxed"
-  style={{
-    color: isDarkMode ? themeColors.colors.white : '#1f3723',
-    fontFamily: "'Caveat', cursive",
-    fontSize: '1.0rem',
-  }}
->
-  {aboutMeText}
-</p>
+            <p
+              className="leading-relaxed"
+              style={{
+                color: isDarkMode ? themeColors.colors.white : '#1F2937',
+                fontFamily: "'Caveat', cursive",
+                fontSize: '1.0rem',
+              }}
+            >
+              {aboutMeText}
+            </p>
           </div>
         </div>
       </div>
