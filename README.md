@@ -13,7 +13,7 @@ A customizable personal portfolio website built with React, TypeScript, and Tail
 
 1. Clone the repository
 ```bash
-git clone https://github.com/cupidbity/portfolio-template.git
+
 cd portfolio-template
 ```
 
