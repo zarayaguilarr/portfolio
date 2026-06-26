@@ -338,7 +338,10 @@ scripts/*.log
 scripts/tmp/
 scripts/.cache/
 # GitHub files
-.github/
 .gitlab/
 .vercel
 .env*
+# Allow GitHub Actions workflows
+!.github/
+!.github/workflows/
+!.github/workflows/*.yml
