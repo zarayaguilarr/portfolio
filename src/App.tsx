@@ -1,14 +1,45 @@
-export default function App() {
+import { Routes, Route } from 'react-router-dom'
+import { DarkModeProvider, useDarkMode } from './contexts/DarkModeContext'
+import Navigation from './components/section/Navigation'
+import About from './components/section/About'
+import Experience from './components/section/Experience'
+import Skills from './components/section/Skills'
+import Footer from './components/Footer'
+import Contact from './pages/Contact'
+
+function HomePage() {
   return (
-    <div style={{ padding: '40px', textAlign: 'center', minHeight: '100vh', backgroundColor: '#fff', fontFamily: 'system-ui' }}>
-      <h1 style={{ color: '#C88B95', marginBottom: '20px' }}>✨ Zaray's Portfolio ✨</h1>
-      <p style={{ color: '#666', fontSize: '18px', marginBottom: '30px' }}>Welcome! My portfolio is being updated.</p>
-      <div style={{ maxWidth: '500px', margin: '0 auto', lineHeight: '1.8', color: '#555' }}>
-        <p>📍 <strong>About Me:</strong> Data Science & Public Policy Student at Georgetown University</p>
-        <p>🎓 <strong>Background:</strong> UC San Diego Graduate | Paralegal Certificate</p>
-        <p>💼 <strong>Skills:</strong> Data Analysis, Policy Research, Technical Writing</p>
-        <p>📧 <strong>Contact:</strong> <a href="mailto:naweidh.03@gmail.com" style={{ color: '#C88B95', textDecoration: 'none' }}>naweidh.03@gmail.com</a></p>
-      </div>
-    </div>
+    <>
+      <About />
+      <Experience />
+      <Skills />
+    </>
   )
 }
+
+function AppContent() {
+  const { isDarkMode } = useDarkMode();
+
+  return (
+    <>
+      <Navigation />
+      <div style={{ backgroundColor: isDarkMode ? '#101727' : '#fff' }}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+        <Footer />
+      </div>
+    </>
+  )
+}
+
+function App() {
+  return (
+    <DarkModeProvider>
+      <AppContent />
+    </DarkModeProvider>
+  )
+}
+
+export default App
