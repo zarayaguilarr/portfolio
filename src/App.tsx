@@ -4,7 +4,6 @@ import { useThemeColors } from './hooks/useThemeColors'
 import { colors } from './styles/colors'
 import Navigation from './components/section/Navigation'
 import About from './components/section/About'
-import Projects from './components/section/Projects'
 import Experience from './components/section/Experience'
 import Skills from './components/section/Skills'
 import Footer from './components/Footer'
@@ -20,7 +19,6 @@ function HomePage() {
   return (
     <>
       <About />
-      <Projects />
       <Experience />
       {/* Divider */}
       <div className="w-full py-8 relative" style={{
