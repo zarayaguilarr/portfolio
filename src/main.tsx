@@ -11,7 +11,7 @@ console.log('Root element:', root);
 try {
   createRoot(root!).render(
     <StrictMode>
-      <BrowserRouter>
+      <BrowserRouter basename="/portfolio">
         <App />
       </BrowserRouter>
     </StrictMode>,
