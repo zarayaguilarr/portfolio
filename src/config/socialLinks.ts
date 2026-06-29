@@ -1,9 +1,9 @@
 // Social Links Configuration - uses environment variables only
 export const socialLinks = {
   // Main social profiles
-  github: import.meta.env.VITE_GITHUB_URL='https://github.com/zarayaguilarr',
-  linkedin: import.meta.env.VITE_LINKEDIN_URL='https://www.linkedin.com/in/zarayaguilar/',
-  email: import.meta.env.VITE_EMAIL='za248@georgetown.edu',
+  github: import.meta.env.VITE_GITHUB_URL||'https://github.com/zarayaguilarr',
+  linkedin: import.meta.env.VITE_LINKEDIN_URL||'https://www.linkedin.com/in/zarayaguilar/',
+  email: import.meta.env.VITE_EMAIL||'za248@georgetown.edu',
 
   // GitHub repository URLs
   repositories: {
