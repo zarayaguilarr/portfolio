@@ -12,7 +12,7 @@ const Experience = () => {
       title: "Executive Assistant",
       company: "UC San Diego",
       location: "La Jolla, CA",
-      period: "July 2024 - Present",
+      period: "July 2024 - August 2026",
       description: [
         "As Executive Assistant to EnCORE in UC San Diego’s Computer Science and Engineering Department, I managed high-volume administrative and operational workflows, supporting program leadership with compliance tracking, documentation management, and reporting processes. I coordinated logistics for institutional events, meetings, and workshops, maintained accurate records systems, and collaborated with faculty, administrators, and external stakeholders to ensure the successful execution of program initiatives. I also supported financial and operational functions, including expense tracking, reimbursements, and budget documentation, while ensuring compliance with university policies and procedures.",
       ]

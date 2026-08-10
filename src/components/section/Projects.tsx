@@ -233,7 +233,7 @@ const Projects = () => {
   const projects = [
     {
       title: "Relationship between Chamber Advantage and Legislative Productivity",
-      description: " a quantitative analysis examining the relationship between chamber advantage and legislative productivity in the United States Congress using official legislative data.",
+      description: "A quantitative analysis examining the relationship between chamber advantage and legislative productivity in the United States Congress using official legislative data.",
       technologies: ["R", "R Studio" , "Group Project"],
       icon: comingSoon,
       detailsUrl: projectOnePdf,
